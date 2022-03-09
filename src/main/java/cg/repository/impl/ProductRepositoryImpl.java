@@ -39,7 +39,8 @@ public class ProductRepositoryImpl implements IProductRepository {
     @Override
     public Product findProductById(int id) {
         // SELECT * FROM product WHERE id = ?
-        String queryStr = "SELECT p FROM Product AS p WHERE p.id = :id";
+        // String queryStr = "SELECT * FROM product WHERE product_id = ?";
+        String queryStr = "FROM Product AS p WHERE p.id = :id";
         TypedQuery<Product> query = entityManager.createQuery(queryStr, Product.class);
         query.setParameter("id", id);
         return query.getSingleResult();
